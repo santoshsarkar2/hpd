@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle1.EditRequesterTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle1.EditRequesterLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{requesterController.selected.id}" title="#{bundle1.EditRequesterTitle_id}" required="true" requiredMessage="#{bundle1.EditRequesterRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle1.EditRequesterLabel_lastName}" for="lastName" />
+                    <h:inputText id="lastName" value="#{requesterController.selected.lastName}" title="#{bundle1.EditRequesterTitle_lastName}" required="true" requiredMessage="#{bundle1.EditRequesterRequiredMessage_lastName}"/>
+                    <h:outputLabel value="#{bundle1.EditRequesterLabel_firstName}" for="firstName" />
+                    <h:inputText id="firstName" value="#{requesterController.selected.firstName}" title="#{bundle1.EditRequesterTitle_firstName}" required="true" requiredMessage="#{bundle1.EditRequesterRequiredMessage_firstName}"/>
+                    <h:outputLabel value="#{bundle1.EditRequesterLabel_emailAddress}" for="emailAddress" />
+                    <h:inputText id="emailAddress" value="#{requesterController.selected.emailAddress}" title="#{bundle1.EditRequesterTitle_emailAddress}" required="true" requiredMessage="#{bundle1.EditRequesterRequiredMessage_emailAddress}"/>
+                    <h:outputLabel value="#{bundle1.EditRequesterLabel_jurisdiction}" for="jurisdiction" />
+                    <h:inputText id="jurisdiction" value="#{requesterController.selected.jurisdiction}" title="#{bundle1.EditRequesterTitle_jurisdiction}" />
+                    <h:outputLabel value="#{bundle1.EditRequesterLabel_country}" for="country" />
+                    <h:inputText id="country" value="#{requesterController.selected.country}" title="#{bundle1.EditRequesterTitle_country}" />
+                    <h:outputLabel value="#{bundle1.EditRequesterLabel_documentType}" for="documentType" />
+                    <h:inputText id="documentType" value="#{requesterController.selected.documentType}" title="#{bundle1.EditRequesterTitle_documentType}" />
+                </h:panelGrid>
+                <h:commandLink action="#{requesterController.update}" value="#{bundle1.EditRequesterSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle1.EditRequesterViewLink}"/>
+                <br />
+                <h:commandLink action="#{requesterController.prepareList}" value="#{bundle1.EditRequesterShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle1.EditRequesterIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value=" "></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <div class="container">
+                <h2>ADA Disclaimer:</h2>
+                <p>The following document(s) are made available in an effort to maintain transparency and may not be accessible for individuals with disabilities as indicated by California Assembly Bill 434 (Chapter 780, Statutes of 2017). Each jurisdiction authors their own document(s). HCD does not control, manage, or take responsibility for the information contained within each document.</p>
+                <b:jumbotron>
+                    <h:form id="frm1">
+
+
+                        <b:row styleClass="show-grid">
+                            <b:column col-xs="6" col-md="4">
+
+                                <b:selectOneMenu id="jurisdiction" value="#{requesterController.jurisdictions}" label="Jurisdiction" required="true"
+                                                 select2="true">
+                                    <f:selectItem itemLabel="Select Jurisdiction" itemValue="" />
+                                    <f:selectItems value="#{requesterController.getJurisdiction()}"></f:selectItems>
+                                </b:selectOneMenu>
+                            </b:column>
+
+                            <b:column col-xs="6" col-md="4">
+                                <b:selectOneMenu id="documentType" value="#{requesterController.document_types}" label="Document Type" required="true"
+                                                 select2="true">
+                                    <f:selectItem itemLabel="Select Doc Type" itemValue="" />
+                                    <f:selectItems value="#{requesterController.getDocType()}"></f:selectItems>
+                                </b:selectOneMenu>
+                            </b:column>
+
+
+
+                            <b:column col-xs="6" col-md="4">
+                                <b:selectOneMenu id="planningPeriod" value="#{requesterController.planning_period}" label="Planning Period" 
+                                                 select2="true">
+                                    <f:selectItem itemLabel="Select Planning Period" itemValue="" />
+                                    <f:selectItems value="#{requesterController.getPlanningPeriod()}"></f:selectItems>
+                                </b:selectOneMenu>
+                            </b:column>
+
+
+                        </b:row>
+
+                        <div class="g-recaptcha" data-sitekey="6LdbKlMaAAAAAJqiec2gY9ykK0ohXOVw80SgtWbl"></div>
+
+                        <h:commandButton value = "Submit" action = "#{requesterController.resultsList()}" /> 
+                    </h:form>
+                </b:jumbotron>
+                
+
+            </div>
+            <script src="https://www.google.com/recaptcha/api.js"></script>
+
+            <script>
+
+                document.getElementById("frm1").addEventListener("submit", function (evt)
+                {
+
+                    var response = grecaptcha.getResponse();
+                    if (response.length == 0)
+                    {
+                        //reCaptcha not verified
+                        alert("please verify you are humann!");
+                        evt.preventDefault();
+                        return false;
+                    }
+                    //captcha verified
+                    //do the rest of your validations here
+
+                });
+            </script>
+        </ui:define>
+    </ui:composition>
+</html>
+

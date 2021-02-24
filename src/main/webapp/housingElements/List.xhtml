@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Housing Elements"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <div class="container">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                
+
+               
+                <br />
+                
+                
+                <b:dataTable value="#{housingElementsController.items}" var="item">
+                    
+                    <b:dataTableColumn selection-mode="multiple" />
+                    <b:dataTableColumn value="#{item.jurisdiction}" />
+                    <b:dataTableColumn value="#{item.county}" />
+                    <b:dataTableColumn value="#{item.documentType}" />
+                    <b:dataTableColumn value="#{item.dateReceived}" />
+                    <b:dataTableColumn value="#{item.planningPeriod}" />
+                    <b:dataTableColumn value="#{item.trackingDate}" />
+                    <b:dataTableColumn value="#{item.filename}" />
+                    <b:dataTableColumn label=" Download " >
+                            <b:row>
+                                <b:column><a href="/HPD2/downloadFileServlet?id=#{item.id}">Download</a></b:column>
+                            </b:row>
+                        </b:dataTableColumn>
+                    
+                </b:dataTable>
+
+
+
+
+                <ui:remove>
+                    <h:commandLink action="#{housingElementsController.prepareCreate}" value="#{bundle.ListHousingElementsCreateLink}"/>
+                </ui:remove>
+                <br />
+                <br />
+                <b:link outcome="/index" value="#{bundle.ListHousingElementsIndexLink}"/>
+            </h:form>
+        </div>
+        </ui:define>
+    </ui:composition>
+
+</html>

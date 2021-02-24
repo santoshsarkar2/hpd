@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle1.ViewRequesterTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle1.ViewRequesterLabel_id}"/>
+                    <h:outputText value="#{requesterController.selected.id}" title="#{bundle1.ViewRequesterTitle_id}"/>
+                    <h:outputText value="#{bundle1.ViewRequesterLabel_lastName}"/>
+                    <h:outputText value="#{requesterController.selected.lastName}" title="#{bundle1.ViewRequesterTitle_lastName}"/>
+                    <h:outputText value="#{bundle1.ViewRequesterLabel_firstName}"/>
+                    <h:outputText value="#{requesterController.selected.firstName}" title="#{bundle1.ViewRequesterTitle_firstName}"/>
+                    <h:outputText value="#{bundle1.ViewRequesterLabel_emailAddress}"/>
+                    <h:outputText value="#{requesterController.selected.emailAddress}" title="#{bundle1.ViewRequesterTitle_emailAddress}"/>
+                    <h:outputText value="#{bundle1.ViewRequesterLabel_jurisdiction}"/>
+                    <h:outputText value="#{requesterController.selected.jurisdiction}" title="#{bundle1.ViewRequesterTitle_jurisdiction}"/>
+                    <h:outputText value="#{bundle1.ViewRequesterLabel_country}"/>
+                    <h:outputText value="#{requesterController.selected.country}" title="#{bundle1.ViewRequesterTitle_country}"/>
+                    <h:outputText value="#{bundle1.ViewRequesterLabel_documentType}"/>
+                    <h:outputText value="#{requesterController.selected.documentType}" title="#{bundle1.ViewRequesterTitle_documentType}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{requesterController.destroyAndView}" value="#{bundle1.ViewRequesterDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle1.ViewRequesterEditLink}"/>
+                <br />
+                <h:commandLink action="#{requesterController.prepareCreate}" value="#{bundle1.ViewRequesterCreateLink}" />
+                <br />
+                <h:commandLink action="#{requesterController.prepareList}" value="#{bundle1.ViewRequesterShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle1.ViewRequesterIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

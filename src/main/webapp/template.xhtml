@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        
+        <h:outputStylesheet library="css" name="style.css"/>
+    </h:head>
+    
+    
+
+    <h:body>
+        <p:growl id="growl" life="3000" />
+        
+<!-- Navigation -->
+
+<b:navBar inverse="true"  fluid="true">
+    <div class="container">
+  <b:navbarLinks>
+    <b:navLink value="HPD Search" href="/HPD2"></b:navLink>
+    <ui:remove><b:navLink value="Submit Request" href="/HPD2/faces/requester/Create.xhtml"></b:navLink></ui:remove>
+    <b:navLink value="Housing Elements" href="/HPD2/faces/housingElements/List.xhtml"></b:navLink>
+    
+    
+  </b:navbarLinks>
+        
+  <b:navbarLinks pull="right">
+      <b:navLink value="Inline Search" href="/HPD2/faces/index.xhtml"></b:navLink>
+      <b:navLink value="Create New" href="/HPD2/faces/fileUpload/UploadBlob.xhtml"></b:navLink>
+  </b:navbarLinks>
+        
+        </div>
+</b:navBar>
+
+
+<!-- Navigation -->
+
+<div class="container">
+        
+        <h1>
+            <ui:insert name="title">Default Title</ui:insert>
+        </h1>
+        
+
+    <ui:insert name="body"/>
+</div>
+    
+        
+        
+        <!--   FOOTER  -->
+        <ui:insert name="nbtop">
+            <ui:include src="footer.xhtml"/>
+        </ui:insert>
+    </h:body>
+
+</html>

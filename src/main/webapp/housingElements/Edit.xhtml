@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditHousingElementsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditHousingElementsLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{housingElementsController.selected.id}" title="#{bundle.EditHousingElementsTitle_id}" required="true" requiredMessage="#{bundle.EditHousingElementsRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditHousingElementsLabel_jurisdiction}" for="jurisdiction" />
+                    <h:inputText id="jurisdiction" value="#{housingElementsController.selected.jurisdiction}" title="#{bundle.EditHousingElementsTitle_jurisdiction}" required="true" requiredMessage="#{bundle.EditHousingElementsRequiredMessage_jurisdiction}"/>
+                    <h:outputLabel value="#{bundle.EditHousingElementsLabel_county}" for="county" />
+                    <h:inputText id="county" value="#{housingElementsController.selected.county}" title="#{bundle.EditHousingElementsTitle_county}" required="true" requiredMessage="#{bundle.EditHousingElementsRequiredMessage_county}"/>
+                    <h:outputLabel value="#{bundle.EditHousingElementsLabel_documentType}" for="documentType" />
+                    <h:inputText id="documentType" value="#{housingElementsController.selected.documentType}" title="#{bundle.EditHousingElementsTitle_documentType}" required="true" requiredMessage="#{bundle.EditHousingElementsRequiredMessage_documentType}"/>
+                    <h:outputLabel value="#{bundle.EditHousingElementsLabel_dateReceived}" for="dateReceived" />
+                    <h:inputText id="dateReceived" value="#{housingElementsController.selected.dateReceived}" title="#{bundle.EditHousingElementsTitle_dateReceived}" required="true" requiredMessage="#{bundle.EditHousingElementsRequiredMessage_dateReceived}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditHousingElementsLabel_planningPeriod}" for="planningPeriod" />
+                    <h:inputText id="planningPeriod" value="#{housingElementsController.selected.planningPeriod}" title="#{bundle.EditHousingElementsTitle_planningPeriod}" required="true" requiredMessage="#{bundle.EditHousingElementsRequiredMessage_planningPeriod}"/>
+                    <h:outputLabel value="#{bundle.EditHousingElementsLabel_trackingDate}" for="trackingDate" />
+                    <h:inputText id="trackingDate" value="#{housingElementsController.selected.trackingDate}" title="#{bundle.EditHousingElementsTitle_trackingDate}" required="true" requiredMessage="#{bundle.EditHousingElementsRequiredMessage_trackingDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditHousingElementsLabel_filename}" for="filename" />
+                    <h:inputText id="filename" value="#{housingElementsController.selected.filename}" title="#{bundle.EditHousingElementsTitle_filename}" required="true" requiredMessage="#{bundle.EditHousingElementsRequiredMessage_filename}"/>
+                    <h:outputLabel value="#{bundle.EditHousingElementsLabel_fileblob}" for="fileblob" />
+                    <h:inputTextarea rows="4" cols="30" id="fileblob" value="#{housingElementsController.selected.fileblob}" title="#{bundle.EditHousingElementsTitle_fileblob}" />
+                </h:panelGrid>
+                <h:commandLink action="#{housingElementsController.update}" value="#{bundle.EditHousingElementsSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditHousingElementsViewLink}"/>
+                <br />
+                <h:commandLink action="#{housingElementsController.prepareList}" value="#{bundle.EditHousingElementsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditHousingElementsIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

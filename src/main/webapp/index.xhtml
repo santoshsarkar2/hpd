@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value=" "></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <div class="container">
+                <div class="d-flex align-items-center flex-column">
+
+                    <h2>ADA Disclaimer:</h2>
+                    <p>The following document(s) are made available in an effort to maintain transparency and may not be accessible for individuals with disabilities as indicated by California Assembly Bill 434 (Chapter 780, Statutes of 2017). Each jurisdiction authors their own document(s). HCD does not control, manage, or take responsibility for the information contained within each document.</p>
+
+                    <br />
+
+                </div>
+
+
+                <b:jumbotron>
+                    <h:form id="myForm" class="frm_create_req">
+                        <b:row styleClass="show-grid">
+                            <b:column col-xs="6" col-md="4">
+                                <b:selectOneMenu id="jurisdiction" value="#{requesterController.jurisdictions}" label="Jurisdiction" required="true"
+                                                 select2="true">
+                                    <f:selectItem itemLabel="Select Jurisdiction" itemValue="" />
+                                    <f:selectItems value="#{requesterController.getJurisdiction()}"></f:selectItems>
+                                </b:selectOneMenu>
+                            </b:column>
+
+                            <b:column col-xs="6" col-md="4">
+                                <b:selectOneMenu id="documentType" value="#{requesterController.document_types}" label="Document Type" required="true"
+                                                 select2="true">
+                                    <f:selectItem itemLabel="Select Doc Type" itemValue="" />
+                                    <f:selectItems value="#{requesterController.getDocType()}"></f:selectItems>
+                                </b:selectOneMenu>
+                            </b:column>
+                            
+                            <b:column col-xs="6" col-md="4">
+                                <b:selectOneMenu id="planningPeriod" value="#{requesterController.planning_period}" label="Planning Period" 
+                                                 select2="true">
+                                    <f:selectItem itemLabel="Select Planning Period" itemValue="" />
+                                    <f:selectItems value="#{requesterController.getPlanningPeriod()}"></f:selectItems>
+                                </b:selectOneMenu>
+                            </b:column>
+
+
+                        </b:row>
+                        <ui:remove>
+                        <p:messages showDetail="true"/>
+                        <p:captcha label="Captcha"/>
+                        </ui:remove>
+                        
+                        <p:commandButton update="@form messagePanel" value="Search" actionListener="#{requesterController.findHousingElements()}" onclick="loadScript()" />
+
+                        <br/><br/><br/>
+                        
+                        <p:panel id="pannel2" header="Result" >
+
+                            <p:dataTable id="table" value="#{requesterController.findHousingElements()}" var="item">
+
+                                <p:column headerText="Jurisdiction">
+                                    <p:outputLabel id="jurisdiction" value="#{item.jurisdiction}" />
+                                </p:column>
+                                <p:column headerText="County">
+                                    <p:outputLabel id="county" value="#{item.county}" />
+                                </p:column>
+                                <p:column headerText="Document Type">
+                                    <p:outputLabel id="documentType" value="#{item.documentType}" />
+                                </p:column>
+                                <p:column headerText="Date Received">
+                                    <p:outputLabel id="dateReceived" value="#{item.dateReceived}" />
+                                </p:column>
+                                <p:column headerText="Planning Period">
+                                    <p:outputLabel id="planningPeriod" value="#{item.planningPeriod}" />
+                                </p:column>
+                                <p:column headerText="Tracking Date">
+                                    <p:outputLabel id="trackingDate" value="#{item.trackingDate}" />
+                                </p:column>
+                                <p:column headerText="File Name">
+                                    <p:outputLabel id="filename" value="#{item.filename}" />
+                                </p:column>
+                                <p:column headerText="Download">
+                                    <a href="/HPD2/downloadFileServlet?id=#{item.id}">Download</a>
+                                </p:column>
+
+                            </p:dataTable>
+                        </p:panel>
+                    </h:form>
+                </b:jumbotron>
+
+
+
+
+
+
+            </div>
+
+            <script>
+                function loadScript() {
+                    //alert("Image is loaded");
+                    //document.getElementById("myForm").reset();
+                }
+            </script>
+
+        </ui:define>
+    </ui:composition>
+
+
+</html>
+

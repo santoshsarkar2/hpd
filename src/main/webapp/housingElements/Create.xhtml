@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateHousingElementsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateHousingElementsLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{housingElementsController.selected.id}" title="#{bundle.CreateHousingElementsTitle_id}" required="true" requiredMessage="#{bundle.CreateHousingElementsRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateHousingElementsLabel_jurisdiction}" for="jurisdiction" />
+                    <h:inputText id="jurisdiction" value="#{housingElementsController.selected.jurisdiction}" title="#{bundle.CreateHousingElementsTitle_jurisdiction}" required="true" requiredMessage="#{bundle.CreateHousingElementsRequiredMessage_jurisdiction}"/>
+                    <h:outputLabel value="#{bundle.CreateHousingElementsLabel_county}" for="county" />
+                    <h:inputText id="county" value="#{housingElementsController.selected.county}" title="#{bundle.CreateHousingElementsTitle_county}" required="true" requiredMessage="#{bundle.CreateHousingElementsRequiredMessage_county}"/>
+                    <h:outputLabel value="#{bundle.CreateHousingElementsLabel_documentType}" for="documentType" />
+                    <h:inputText id="documentType" value="#{housingElementsController.selected.documentType}" title="#{bundle.CreateHousingElementsTitle_documentType}" required="true" requiredMessage="#{bundle.CreateHousingElementsRequiredMessage_documentType}"/>
+                    <h:outputLabel value="#{bundle.CreateHousingElementsLabel_dateReceived}" for="dateReceived" />
+                    <h:inputText id="dateReceived" value="#{housingElementsController.selected.dateReceived}" title="#{bundle.CreateHousingElementsTitle_dateReceived}" required="true" requiredMessage="#{bundle.CreateHousingElementsRequiredMessage_dateReceived}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateHousingElementsLabel_planningPeriod}" for="planningPeriod" />
+                    <h:inputText id="planningPeriod" value="#{housingElementsController.selected.planningPeriod}" title="#{bundle.CreateHousingElementsTitle_planningPeriod}" required="true" requiredMessage="#{bundle.CreateHousingElementsRequiredMessage_planningPeriod}"/>
+                    <h:outputLabel value="#{bundle.CreateHousingElementsLabel_trackingDate}" for="trackingDate" />
+                    <h:inputText id="trackingDate" value="#{housingElementsController.selected.trackingDate}" title="#{bundle.CreateHousingElementsTitle_trackingDate}" required="true" requiredMessage="#{bundle.CreateHousingElementsRequiredMessage_trackingDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateHousingElementsLabel_filename}" for="filename" />
+                    <h:inputText id="filename" value="#{housingElementsController.selected.filename}" title="#{bundle.CreateHousingElementsTitle_filename}" required="true" requiredMessage="#{bundle.CreateHousingElementsRequiredMessage_filename}"/>
+                    <h:outputLabel value="#{bundle.CreateHousingElementsLabel_fileblob}" for="fileblob" />
+                    <h:inputTextarea rows="4" cols="30" id="fileblob" value="#{housingElementsController.selected.fileblob}" title="#{bundle.CreateHousingElementsTitle_fileblob}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{housingElementsController.create}" value="#{bundle.CreateHousingElementsSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{housingElementsController.prepareList}" value="#{bundle.CreateHousingElementsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateHousingElementsIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Create"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <div class="container">
+                <div class="row">
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+
+                    <form class="formblob" method="post" action="/HPD2/uploadServlet" enctype="multipart/form-data">
+                        <table class="table" border="0">
+                            <tr>
+                                <td>Jurisdiction: </td>
+                                <td><input class="form-control" type="text" name="jurisdiction" required="true"  size="50"/></td>
+                            </tr>
+                            <tr>
+                                <td>County: </td>
+                                <td><input class="form-control" type="text" name="county" size="50"/></td>
+                            </tr>
+                            <tr>
+                                <td>Document Type: </td>
+                                <td><input class="form-control" type="text" name="doctype" size="50"/></td>
+                            </tr>
+                            <tr>
+                                <td>Planning Period: </td>
+                                <td><input class="form-control" type="text" name="planperiod" size="50"/></td>
+                            </tr>
+                            <tr>
+                                <td>Date Received: </td>
+                                <td><input class="form-control" type="date" name="datercv" required="true" style="max-width: 300px"/></td>
+                            </tr>
+                            <tr>
+                                <td>Tracking Date: </td>
+                                <td><input class="form-control" type="date" name="trackingdt" required="true" style="max-width: 300px" /></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Upload File : </td>
+                                <td><input class="form-control" required="true" type="file" name="uploadedFile" accept="application/pdf" runat="server" style="max-width: 300px"/></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <input class="form-control btn-primary" type="submit" value="Save" style="max-width: 300px"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+
+
+
+                </div>
+            </div>
+
+
+        </ui:define>
+    </ui:composition>
+
+</html>
